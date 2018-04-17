@@ -1,4 +1,3 @@
-<!--index.wxml-->
 
     <block wx:if="{{hasUserInfo}}"> 
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
@@ -6,46 +5,38 @@
     </block>
 
     
-<view class="container">
+<view  style="text-align: left;">
     <form catchsubmit="formSubmit" catchreset="formReset">
-      <view class="page-section">
-          <view class="page-section-title">请输入要搜索的音乐人或歌名</view>
-          <input class="weui-input" name="input" placeholder="在这里输入" />
-      </view>
-
-      <view class="page-section">
+      <input class="input-view" name="input" placeholder="请输入要搜索的音乐"></input>
+      <view class="button-layout">
          <button type="primary" formType="submit" size="mini">搜索</button>
          <button formType="reset" size="mini">重置</button>
       </view>
     </form>
 
+<view class="page-section">
+      <view class="page-view" wx:if="{{xiami_data && XiamiSongdatas}}">来自虾米音乐</view>
+      <scroll-view scroll-y="true" style="height: 300rpx; width:750rpx">
+        <block wx:for="{{XiamiSongdatas}}" wx:for-item="song" wx:key="song">
+          <view  class="scroll-view" style="text-align: middle;">
+            <audio style="text-align: left;width:300rpx" src="{{song.src}}" name="{{song.name}}" author="{{song.author}}" action="{{audioAction}}" poster= "{{song.poster}}" controls="true"></audio>
+          </view>
+        </block>
+      </scroll-view>
+  </view>
+
     <view class="page-section ">
-      <view class="page-section-title" wx:if="{{qq_data && QQSongdatas}}">
-        来自 QQ 音乐
-      </view>
-      <scroll-view scroll-y="true" style="height: 300rpx; ">
+      <view class="page-section-title" wx:if="{{qq_data && QQSongdatas}}">来自 QQ 音乐</view>
+      <scroll-view scroll-y="true" style="height: 300rpx; width:750rpx">
         <block wx:for="{{QQSongdatas}}" wx:for-item="song" wx:key="song">
-            <audio style="text-align: middle;" src="{{song.src}}" name="{{song.name}}" author="{{song.author}}" action="{{audioAction}}" poster= "{{song.poster}}" controls="true"></audio>
+          <view class="scroll-view" style="text-align: middle;">
+             <audio style="text-align: left; width:300rpx" src="{{song.src}}" name="{{song.name}}" author="{{song.author}}" action="{{audioAction}}" poster= "{{song.poster}}" controls="true"></audio>
+          </view>
         </block> 
         </scroll-view>
     </view>
 
-    <view class="page-section">
-      <view class="page-section-title" wx:if="{{xiami_data && XiamiSongdatas}}">
-        来自虾米音乐
-      </view>
-                  <view class="page-section-spacing">
+    
 
-      <scroll-view scroll-y="true" style="height: 300rpx;">
-        <block wx:for="{{XiamiSongdatas}}" wx:for-item="song" wx:key="song">
-          <view class="scroll-view-item" style="text-align: left;">
-            <audio style="text-align: left" src="{{song.src}}" name="{{song.name}}" author="{{song.author}}" action="{{audioAction}}" poster= "{{song.poster}}" controls="true"></audio>
-          </view>
-        </block>
-      </scroll-view>
-            </view>
-
-
-  </view>
 </view>
 

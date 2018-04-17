@@ -36,3 +36,35 @@ form{
   margin-left: 20rpx;
   position: relative;
 }
+
+.main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.button-layout{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+.input-view{
+  display: flex;
+  text-align: left;
+  justify-content: flex-start;
+  align-items: center;
+}
+.scroll-view{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+.audio-view{
+  display: flex;
+  text-align: left; 
+  width:300rpx;
+  flex-wrap: wrap;
+}
+.page-view{
+  display: flex;
+  justify-content: center;
+}
